@@ -40,6 +40,11 @@ class Info : protected Pointers {
   static bool has_exceptions();
   static bool has_package(const char * package_name);
 
+  static char *get_os_info();
+  static char *get_compiler_info();
+  static const char *get_openmp_info();
+  static const char *get_cxx_info();
+
   char **get_variable_names(int &num);
 
 private:

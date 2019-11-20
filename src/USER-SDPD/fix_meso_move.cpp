@@ -16,11 +16,10 @@
       Morteza Jalalvand (IASBS)  jalalvand.m AT gmail.com
 ------------------------------------------------------------------------- */
 
+#include "fix_meso_move.h"
 #include <cstring>
 #include <cmath>
-#include "fix_meso_move.h"
 #include "atom.h"
-#include "group.h"
 #include "update.h"
 #include "modify.h"
 #include "force.h"
@@ -360,7 +359,7 @@ void FixMesoMove::init () {
 }
 
 void FixMesoMove::setup_pre_force (int /*vflag*/) {
-  // set vest equal to v 
+  // set vest equal to v
   double **v = atom->v;
   double **vest = atom->vest;
   int *mask = atom->mask;

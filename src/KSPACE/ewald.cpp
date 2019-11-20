@@ -18,12 +18,9 @@
      triclinic added by Stan Moore (SNL)
 ------------------------------------------------------------------------- */
 
-#include <mpi.h>
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include <cmath>
 #include "ewald.h"
+#include <mpi.h>
+#include <cmath>
 #include "atom.h"
 #include "comm.h"
 #include "force.h"
@@ -72,7 +69,7 @@ void Ewald::settings(int narg, char **arg)
   if (narg != 1) error->all(FLERR,"Illegal kspace_style ewald command");
 
   accuracy_relative = fabs(force->numeric(FLERR,arg[0]));
-}  
+}
 
 /* ----------------------------------------------------------------------
    free all memory
@@ -365,9 +362,7 @@ void Ewald::compute(int eflag, int vflag)
 
   // set energy/virial flags
 
-  if (eflag || vflag) ev_setup(eflag,vflag);
-  else evflag = evflag_atom = eflag_global = vflag_global =
-         eflag_atom = vflag_atom = 0;
+  ev_init(eflag,vflag);
 
   // if atom count has changed, update qsum and qsqsum
 
